@@ -6,6 +6,7 @@ with open(puzzle_file) as file:
     data = [line.strip() for line in file]
     guide = [i.split(" ") for i in data]
 
+# Part one
 opponent = {
     "A": 1,
     "B": 2,
@@ -18,6 +19,7 @@ player = {
     "Z": 3,
 }
 
+# Part one
 player_score = 0
 
 for opponent_move, player_move in guide:
@@ -36,7 +38,25 @@ for opponent_move, player_move in guide:
     else:
         player_score += player.get(player_move)
     
-
 print(player_score)
 
+# Part two
+player_score = 0
 
+for opponent_move, player_move in guide:
+    if player_move == "Y":
+        player_score += (opponent.get(opponent_move) + 3)
+    elif player_move == "Z":
+        if opponent_move == "A":
+            player_score += 8
+        elif opponent_move == "B":
+            player_score += 9
+        else:
+            player_score += 7
+    else:
+        if opponent_move == "A":
+            player_score += 3
+        elif opponent_move == "B":
+            player_score += 1
+        else:
+            player_score += 2

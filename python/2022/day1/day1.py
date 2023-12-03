@@ -5,7 +5,9 @@ puzzle_file = os.path.join(os.environ.get("BASE_DIR"), "2022/day1/puzzle.txt")
 
 with open(puzzle_file) as file:
     data = [line.strip() for line in file]
-elves = [[(int(cal)) for cal in elf] for k, elf in groupby(data, lambda x: x == "") if not k]
+elves = [
+    [(int(cal)) for cal in elf] for k, elf in groupby(data, lambda x: x == "") if not k
+]
 
 # Part one
 sum_calories_list = [sum(cal) for cal in elves]

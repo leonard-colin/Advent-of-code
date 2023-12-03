@@ -15,15 +15,16 @@ for policy in data:
 
     letter = policy.split()[1].strip(":")
     password = policy.split()[2]
-    
+
     # Part one
     # if min <= password.count(letter) <= max:
     #     password_lst.append(password)
 
     # Part two
     letter_pos = list(password)
-    if (letter in letter_pos[min-1] and letter not in letter_pos[max-1]) \
-    or (letter not in letter_pos[min-1] and letter in letter_pos[max-1]):
+    if (letter in letter_pos[min - 1] and letter not in letter_pos[max - 1]) or (
+        letter not in letter_pos[min - 1] and letter in letter_pos[max - 1]
+    ):
         password_lst.append(password)
-    
+
 print(len(password_lst))

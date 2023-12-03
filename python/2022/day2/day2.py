@@ -24,20 +24,26 @@ player_score = 0
 
 for opponent_move, player_move in guide:
     if (
-        opponent_move == "A" and player_move == "X"
-        or opponent_move == "B" and player_move == "Y"
-        or opponent_move == "C" and player_move == "Z"
+        opponent_move == "A"
+        and player_move == "X"
+        or opponent_move == "B"
+        and player_move == "Y"
+        or opponent_move == "C"
+        and player_move == "Z"
     ):
-        player_score += (player.get(player_move) + 3)
+        player_score += player.get(player_move) + 3
     elif (
-        opponent_move == "A" and player_move == "Y" 
-        or opponent_move == "B" and player_move == "Z" 
-        or opponent_move == "C" and player_move == "X"
+        opponent_move == "A"
+        and player_move == "Y"
+        or opponent_move == "B"
+        and player_move == "Z"
+        or opponent_move == "C"
+        and player_move == "X"
     ):
-        player_score += (player.get(player_move) + 6)
+        player_score += player.get(player_move) + 6
     else:
         player_score += player.get(player_move)
-    
+
 print(player_score)
 
 # Part two
@@ -45,7 +51,7 @@ player_score = 0
 
 for opponent_move, player_move in guide:
     if player_move == "Y":
-        player_score += (opponent.get(opponent_move) + 3)
+        player_score += opponent.get(opponent_move) + 3
     elif player_move == "Z":
         if opponent_move == "A":
             player_score += 8

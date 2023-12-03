@@ -9,7 +9,7 @@ with open(puzzle_file) as file:
 
 rucksacks = data
 
-PRIORITY_LEVEL = f'{ascii_lowercase}{ascii_uppercase}'
+PRIORITY_LEVEL = f"{ascii_lowercase}{ascii_uppercase}"
 
 # Part One
 # sum_priorities = 0
@@ -22,17 +22,19 @@ PRIORITY_LEVEL = f'{ascii_lowercase}{ascii_uppercase}'
 #         sum_priorities += (PRIORITY_LEVEL.index(match) + 1)
 # print(sum_priorities)
 
+
 # part two
-def grouper(iterable, n, *, incomplete='fill', fillvalue=None):
+def grouper(iterable, n, *, incomplete="fill", fillvalue=None):
     args = [iter(iterable)] * n
-    if incomplete == 'fill':
+    if incomplete == "fill":
         return zip_longest(*args, fillvalue=fillvalue)
-    if incomplete == 'strict':
+    if incomplete == "strict":
         return zip(*args, strict=True)
-    if incomplete == 'ignore':
+    if incomplete == "ignore":
         return zip(*args)
     else:
-        raise ValueError('Expected fill, strict, or ignore')
+        raise ValueError("Expected fill, strict, or ignore")
+
 
 sum_priorities = 0
 
@@ -44,5 +46,5 @@ for group in groups:
         if match in third:
             sum_priorities += PRIORITY_LEVEL.index(match)
 print(sum_priorities)
-    
+
 # print(common_letter)

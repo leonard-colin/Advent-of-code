@@ -72,5 +72,68 @@ def day_three_part_one():
 
     print(sum_part_numbers)
 
+def day_three_part_two():
+    schema = read_puzzle()
+    number_pattern = r"\d+"
+    gear_pattern = r"\*"
+    sum_part_numbers = 0
+    for line_index, line in enumerate(schema):
+        results = re.finditer(gear_pattern, line)
+        for gear in results:
+            print(gear)
+            if line_index == 0:
+                if gear.start() == 0 and is_symbol(
+                    schema[line_index][: gear.end() + 1]
+                    + schema[line_index + 1][: gear.end() + 1]
+                ):
+                    sum_part_numbers += int(gear.group())
+                elif gear.end() == len(line) and is_symbol(
+                    schema[line_index][gear.start() - 1 :]
+                    + schema[line_index + 1][gear.start() - 1 :]
+                ):
+                    sum_part_numbers += int(gear.group())
+                elif is_symbol(
+                    schema[line_index][gear.start() - 1 : gear.end() + 1]
+                    + schema[line_index + 1][gear.start() - 1 : gear.end() + 1]
+                ):
+                    sum_part_numbers += int(gear.group())
+            elif line_index == len(schema) - 1:
+                if gear.start() == 0 and is_symbol(
+                    schema[line_index][: gear.end() + 1]
+                    + schema[line_index - 1][: gear.end() + 1]
+                ):
+                    sum_part_numbers += int(gear.group())
+                elif gear.end() == len(line) and is_symbol(
+                    schema[line_index][gear.start() - 1 :]
+                    + schema[line_index - 1][gear.start() - 1 :]
+                ):
+                    sum_part_numbers += int(gear.group())
+                elif is_symbol(
+                    schema[line_index][gear.start() - 1 : gear.end() + 1]
+                    + schema[line_index - 1][gear.start() - 1 : gear.end() + 1]
+                ):
+                    sum_part_numbers += int(gear.group())
+            elif gear.start() == 0 and is_symbol(
+                schema[line_index][: gear.end() + 1]
+                + schema[line_index - 1][: gear.end() + 1]
+                + schema[line_index + 1][: gear.end() + 1]
+            ):
+                sum_part_numbers += int(gear.group())
+            elif gear.end() == len(line) and is_symbol(
+                schema[line_index][gear.start() - 1 :]
+                + schema[line_index - 1][gear.start() - 1 :]
+                + schema[line_index + 1][gear.start() - 1 :]
+            ):
+                sum_part_numbers += int(gear.group())
+            elif is_symbol(
+                schema[line_index][gear.start() - 1 : gear.end() + 1]
+                + schema[line_index - 1][gear.start() - 1 : gear.end() + 1]
+                + schema[line_index + 1][gear.start() - 1 : gear.end() + 1]
+            ):
+                sum_part_numbers += int(gear.group())
 
-day_three_part_one()
+    # print(sum_part_numbers)
+
+
+# day_three_part_one()
+day_three_part_two()
